@@ -1,0 +1,31 @@
+server:
+  port: 8081
+
+spring:
+  profiles:
+    active: db,consul
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    # 注册到 Eureka Server 的名称
+    name: micro-provider-user
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+# 负载均衡配置
+micro-provider-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+# feign 日志配置
+logging:
+  level:
+    com.cloud.user.feign.MoviefeignClient: DEBUG
+
+#management:
+#  endpoint:
+#    health:
+#      show-details: always

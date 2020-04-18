@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: db,consul
+  #basic 认证 账户密码
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    # 注册到 注册中新 Server 的名称
+    name: micro-provider-movie
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
