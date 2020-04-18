@@ -1,5 +1,6 @@
 package com.cloud.rabbit.controller;
 
+import com.cloud.common.biz.SSBiz;
 import com.cloud.common.service.CommonService;
 import com.cloud.common.service.SimpleService;
 import com.cloud.rabbit.publisher.Publisher;
@@ -27,6 +28,9 @@ public class RabbitContoller {
 //    @Autowired
     RabbitSimpleService rabbitSimpleService;
 
+    @Autowired
+    private SSBiz ssBiz;
+
     @RequestMapping("push")
     public Object push(String msg,String type){
         System.out.println(new Date());
@@ -50,5 +54,10 @@ public class RabbitContoller {
     public Object simple(){
         simpleService.say();
         return "sss";
+    }
+
+    @RequestMapping("condition")
+    public Object condition(){
+        return ssBiz.talk();
     }
 }

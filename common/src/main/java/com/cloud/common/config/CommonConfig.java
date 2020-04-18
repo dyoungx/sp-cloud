@@ -1,17 +1,20 @@
 package com.cloud.common.config;
 
-import com.cloud.common.service.CommonService;
-import com.cloud.common.service.CommonServiceImpl;
+import com.cloud.common.biz.SSBiz;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ConditionalOnProperty(name = "common.auto", havingValue = "true", matchIfMissing = true)
+@ComponentScan(basePackages = {"com.cloud.common.controller","com.cloud.common.service"})
 public class CommonConfig {
 
-    @Bean
-    public CommonService getCommonService(){
-        CommonService commonService = new CommonServiceImpl();
-        System.out.println("dddddddddddddddddddddd");
-        return commonService;
-    }
+   @Bean
+   @ConditionalOnMissingBean
+   public SSBiz getSSBiz(){
+       return new SSBiz();
+   }
 }
