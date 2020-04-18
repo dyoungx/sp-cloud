@@ -9,7 +9,7 @@ public class SimpleAearePostProcessor implements BeanPostProcessor {
     private RabbitSimpleService rabbitSimpleService;
 
     public SimpleAearePostProcessor(RabbitSimpleService rabbitSimpleService){
-        System.out.println("SimpleAearePostProcessor  init");
+        System.out.println("SimpleAearePostProcessor init");
         this.rabbitSimpleService = rabbitSimpleService;
     }
 
